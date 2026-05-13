@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title></head>
+<body>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASBAD System | هوشمندسازی معادن</title>
+    <!-- فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+    <!-- آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<pre><code>&lt;style&gt;
+    :root {
+        /* پالت رنگی مدرن و معدنی */
+        --brand-primary: #E65100; /* نارنجی اصلی */
+        --brand-gradient: linear-gradient(135deg, #FF9800, #E65100);
+        --text-dark: #212121;
+        --text-light: #757575;
+        --white: #ffffff;
+        
+        /* رنگ‌های ملایم برای پس‌زمینه دکمه‌ها */
+        --bg-phone: #E3F2FD;
+        --bg-whatsapp: #E8F5E9;
+        --bg-insta: #FCE4EC;
+        --bg-sms: #FFF3E0;
+        --bg-telegram: #E1F5FE;
+    }
+
+    body {
+        font-family: &#39;Vazirmatn&#39;, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* پس‌زمینه نارنجی گرم و زنده */
+        background: var(--brand-gradient);
+        color: var(--text-dark);
+    }
+
+    .container {
+        width: 100%;
+        max-width: 450px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px); /* افکت شیشه‌ای */
+        border-radius: 30px;
+        padding: 40px 25px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    /* هدر و لوگو */
+    .header {
+        margin-bottom: 35px;
+    }
+
+    .logo-box {
+        width: 110px;
+        height: 110px;
+        background: var(--white);
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 25px rgba(230, 81, 0, 0.2);
+        border: 4px solid #fff;
+        position: relative;
+    }
+    
+    /* حلقه نارنجی دور لوگو */
+    .logo-box::after {
+        content: &#39;&#39;;
+        position: absolute;
+        top: -8px; left: -8px; right: -8px; bottom: -8px;
+        border-radius: 50%;
+        border: 3px solid var(--brand-primary);
+        opacity: 0.3;
+    }
+
+    .logo-box i {
+        font-size: 45px;
+        background: var(--brand-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin: 10px 0 5px;
+        color: var(--text-dark);
+        font-weight: 900;
+        letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+        color: var(--text-light);
+        font-size: 1rem;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    /* شبکه دکمه‌ها */
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        padding: 18px 10px;
+        border-radius: 18px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn i {
+        margin-left: 10px;
+        font-size: 1.4rem;
+        transition: transform 0.3s;
+    }
+
+    /* استایل پایه دکمه‌ها (رنگ ملایم) */
+    .btn-phone { background-color: var(--bg-phone); color: #1976D2; }
+    .btn-whatsapp { background-color: var(--bg-whatsapp); color: #388E3C; }
+    .btn-instagram { background-color: var(--bg-insta); color: #C2185B; }
+    .btn-sms { background-color: var(--bg-sms); color: #F57C00; }
+    .btn-telegram { background-color: var(--bg-telegram); color: #0288D1; }
+
+    /* استایل هاور (وقتی موس روی دکمه می‌رود - رنگ پررنگ) */
+    .btn:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        color: var(--white);
+    }
+    
+    /* تغییر رنگ پس‌زمینه در هاور به رنگ برند */
+    .btn:hover.btn-phone { background-color: #1976D2; }
+    .btn:hover.btn-whatsapp { background-color: #25D366; }
+    .btn:hover.btn-instagram { background-color: #E1306C; }
+    .btn:hover.btn-sms { background-color: #F57C00; }
+    .btn:hover.btn-telegram { background-color: #0088cc; }
+
+    .btn:hover i {
+        transform: scale(1.2) rotate(10deg);
+    }
+
+    /* بخش نقشه */
+    .map-section {
+        margin-top: 30px;
+        text-align: right;
+    }
+    
+    .map-title {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .map-container {
+        width: 100%;
+        height: 200px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border: 1px solid #eee;
+        position: relative;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        filter: grayscale(20%); /* کمی خاکستری برای حرفه‌ای‌تر شدن */
+        transition: filter 0.3s;
+    }
+    
+    .map-container:hover iframe {
+        filter: grayscale(0%); /* رنگی شدن وقتی موس روی نقشه است */
+    }
+
+    .map-link {
+        display: block;
+        margin-top: 10px;
+        color: var(--brand-primary);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transition: opacity 0.3s;
+    }
+    .map-link:hover { opacity: 0.8; }
+
+    .footer {
+        margin-top: 40px;
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.8);
+    }
+
+&lt;/style&gt;
+</code></pre>
+</head>
+<body>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;card&quot;&gt;
+        
+        &lt;!-- هدر --&gt;
+        &lt;div class=&quot;header&quot;&gt;
+            &lt;div class=&quot;logo-box&quot;&gt;
+                &lt;i class=&quot;fa-solid fa-mountain-sun&quot;&gt;&lt;/i&gt; &lt;!-- آیکون مرتبط با معدن --&gt;
+            &lt;/div&gt;
+            &lt;h1&gt;ASBAD System&lt;/h1&gt;
+            &lt;p class=&quot;subtitle&quot;&gt;پیشرو در هوشمندسازی و اتوماسیون معادن&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- دکمه‌های ارتباطی --&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+            &lt;a href=&quot;tel:+989120000000&quot; class=&quot;btn btn-phone&quot;&gt;
+                &lt;i class=&quot;fa-solid fa-phone&quot;&gt;&lt;/i&gt; تماس
+            &lt;/a&gt;
+            &lt;a href=&quot;https://wa.me/989120000000&quot; class=&quot;btn btn-whatsapp&quot; target=&quot;_blank&quot;&gt;
+                &lt;i class=&quot;fa-brands fa-whatsapp&quot;&gt;&lt;/i&gt; واتس‌اپ
+            &lt;/a&gt;
+            &lt;a href=&quot;https://instagram.com/YourID&quot; class=&quot;btn btn-instagram&quot; target=&quot;_blank&quot;&gt;
+                &lt;i class=&quot;fa-brands fa-instagram&quot;&gt;&lt;/i&gt; اینستاگرام
+            &lt;/a&gt;
+            &lt;a href=&quot;sms:+989120000000&quot; class=&quot;btn btn-sms&quot;&gt;
+                &lt;i class=&quot;fa-solid fa-comment-sms&quot;&gt;&lt;/i&gt; پیامک
+            &lt;/a&gt;
+            &lt;a href=&quot;https://t.me/YourID&quot; class=&quot;btn btn-telegram&quot; target=&quot;_blank&quot;&gt;
+                &lt;i class=&quot;fa-brands fa-telegram&quot;&gt;&lt;/i&gt; تلگرام
+            &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;!-- بخش نقشه --&gt;
+        &lt;div class=&quot;map-section&quot;&gt;
+            &lt;div class=&quot;map-title&quot;&gt;
+                &lt;i class=&quot;fa-solid fa-map-location-dot&quot; style=&quot;color: var(--brand-primary);&quot;&gt;&lt;/i&gt;
+                دفتر مرکزی
+            &lt;/div&gt;
+            &lt;div class=&quot;map-container&quot;&gt;
+                &lt;!-- نکته: در قسمت src، مختصات را جایگزین کنید --&gt;
+                &lt;iframe 
+                    src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.9654321!2d51.3890!3d35.6892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQxJzIxLjEiTiA1McKwMjMnMjAuNCJF!5e0!3m2!1sen!2s!4v1600000000000!5m2!1sen!2s&quot; 
+                    allowfullscreen=&quot;&quot; 
+                    loading=&quot;lazy&quot;&gt;
+                &lt;/iframe&gt;
+            &lt;/div&gt;
+            &lt;a href=&quot;https://maps.google.com/?q=35.6892,51.3890&quot; target=&quot;_blank&quot; class=&quot;map-link&quot;&gt;
+                باز کردن در گوگل مپ &lt;i class=&quot;fa-solid fa-arrow-up-right-from-square&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;footer&quot;&gt;
+        © ۱۴۰۳ ASBAD System | راهکارهای هوشمند معدنی
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</body>
+</html>
+</body>
+</html>
